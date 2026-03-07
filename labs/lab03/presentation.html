@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Галиев Самир Салаватович">
+  <meta name="dcterms.date" content="2026-01-01">
+  <title>Лабораторная работа 1</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/black.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа 1</h1>
+  <p class="subtitle">Установка ОС на виртуальную машину</p>
+  <p class="author">Галиев Самир Салаватович</p>
+  <p class="date">2026</p>
+</section>
+<section id="TOC">
+<nav role="doc-toc"> 
+
+</nav>
+</section>
+
+<section id="информация" class="slide level1">
+<h1>Информация</h1>
+<h2 id="докладчик">Докладчик</h2>
+<div class="columns" data-align="center">
+<div class="column" style="width:70%;">
+<ul>
+<li>Галиев Самир Салаватович</li>
+<li>студент</li>
+<li>дисциплина: Архитектура компьютера</li>
+<li>Российский университет дружбы народов им. П. Лумумбы</li>
+<li><a href="mailto:1032252590@rudn.ru">1032252590@rudn.ru</a></li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="image/avatar.jpg" style="width:60.0%" /></p>
+</div>
+</div>
+</section>
+<section id="вводная-часть" class="slide level1">
+<h1>Вводная часть</h1>
+<h2 id="актуальность">Актуальность</h2>
+<ul>
+<li>Современные исследования требуют быстрого оформления
+документации</li>
+<li>Markdown позволяет создавать читаемый текст с минимальной
+разметкой</li>
+<li>Единый исходный файл конвертируется в несколько форматов</li>
+<li>Автоматизация через Makefile экономит время при подготовке
+отчётов</li>
+</ul>
+<h2 id="объект-и-предмет-исследования">Объект и предмет
+исследования</h2>
+<ul>
+<li>Язык разметки Markdown как инструмент документирования</li>
+<li>Процессор Pandoc для конвертации форматов</li>
+<li>Фильтры pandoc-crossref и pandoc-citeproc для научных работ</li>
+</ul>
+<h2 id="цели-и-задачи">Цели и задачи</h2>
+<p><strong>Цель:</strong> Научиться оформлять отчёты с помощью
+Markdown</p>
+<p><strong>Задачи:</strong> - Освоить базовый синтаксис разметки -
+Настроить окружение для конвертации - Создать шаблон отчёта по ГОСТ
+7.32-2001 - Автоматизировать сборку через Makefile</p>
+<h2 id="материалы-и-методы">Материалы и методы</h2>
+<ul>
+<li>Исходный формат: Markdown (.md)</li>
+<li>Процессор: pandoc с фильтрами</li>
+<li>Результирующие форматы:
+<ul>
+<li>PDF (через LaTeX/beamer)</li>
+<li>DOCX (для редактирования)</li>
+</ul></li>
+<li>Автоматизация: Makefile</li>
+</ul>
+</section>
+<section id="выполнение-лабораторной-работы" class="slide level1">
+<h1>Выполнение лабораторной работы</h1>
+<p>Была произведена установка программного обеспечения: 1. Установлен
+Pandoc с официального сайта. 2. Скачаны и настроены фильтры
+<code>pandoc-citeproc</code> и <code>pandoc-crossref</code>. 3.
+Проверена работоспособность через консоль.</p>
+<blockquote>
+<p><strong>Рис. 1.</strong> Проверка версии Pandoc в терминале.</p>
+<figure>
+<img data-src="image/1.png" alt="Проверка версии Pandoc" />
+<figcaption aria-hidden="true">Проверка версии Pandoc</figcaption>
+</figure>
+</blockquote>
+<h2 id="создание-исходного-файла">Создание исходного файла</h2>
+<p>Был создан файл <code>report.md</code>. В нём реализована структура
+отчёта: титульная информация (через YAML заголовок), разделы, списки,
+формулы и ссылки на изображения.</p>
+<blockquote>
+<p><strong>Рис. 2.</strong> Структура файла report.md в редакторе.</p>
+<figure>
+<img data-src="image/3.png" alt="Исходный код файла" />
+<figcaption aria-hidden="true">Исходный код файла</figcaption>
+</figure>
+</blockquote>
+<h2 id="настройка-makefile">Настройка Makefile</h2>
+<p>Для автоматической конвертации создан файл <code>Makefile</code>. Он
+содержит правила для сборки <code>.pdf</code> и <code>.docx</code>
+версий документа с использованием необходимых фильтров.</p>
+<blockquote>
+<p><strong>Рис. 3.</strong> Содержимое файла Makefile.</p>
+<figure>
+<img data-src="image/4.png" alt="Файл Makefile" />
+<figcaption aria-hidden="true">Файл Makefile</figcaption>
+</figure>
+</blockquote>
+<h2 id="конвертация-и-сборка">Конвертация и сборка</h2>
+<p>С помощью команды <code>make all</code> произведена сборка проекта. В
+результате были получены файлы <code>report.pdf</code> и
+<code>report.docx</code>.</p>
+<blockquote>
+<p><strong>Рис. 4.</strong> Результат работы команды make в
+терминале.</p>
+<figure>
+<img data-src="image/6.png" alt="результат сборки" />
+<figcaption aria-hidden="true">результат сборки</figcaption>
+</figure>
+</blockquote>
+<blockquote>
+<p><strong>Рис. 5.</strong> Итоговый PDF документ.</p>
+<figure>
+<img data-src="image/7.png" alt="Открытый PDF файл" />
+<figcaption aria-hidden="true">Открытый PDF файл</figcaption>
+</figure>
+</blockquote>
+</section>
+<section id="ответы-на-контрольные-вопросы" class="slide level1">
+<h1>Ответы на контрольные вопросы</h1>
+<p><strong>Вопрос 1:</strong> Какие инструменты необходимы для
+конвертации Markdown в PDF с поддержкой перекрёстных ссылок?
+<strong>Ответ:</strong> Для этого необходим Pandoc, а также фильтр
+<code>pandoc-crossref</code>, который подключается через флаг
+<code>--filter</code>.</p>
+<p><strong>Вопрос 2:</strong> Как в Markdown оформить выключную формулу
+с меткой для ссылки? <strong>Ответ:</strong> Необходимо использовать
+конструкцию <code>$$...$${#eq:label}</code>, где <code>label</code> —
+уникальный идентификатор формулы. Ссылка на неё ставится как
+<code>[-@eq:label]</code>.</p>
+<p><strong>Вопрос 3:</strong> В каких форматах согласно заданию должен
+быть предоставлен отчёт? <strong>Ответ:</strong> Отчёт должен быть
+предоставлен в трёх форматах: <code>.md</code> (исходник),
+<code>.pdf</code> и <code>.docx</code>, упакованных в архив вместе со
+скриншотами и Makefile.</p>
+<p>#Вывод</p>
+<p>В ходе выполнения лабораторной работы № 3 были освоены навыки работы
+с языком разметки Markdown. Я научился: - Использовать базовый синтаксис
+(заголовки, списки, форматирование текста). - Вставлять математические
+формулы и код. - Настраивать автоматическую конвертацию документов с
+помощью Pandoc и Makefile. - Оформлять документацию в соответствии с
+требованиями ГОСТ (структура отчёта).</p>
+<p>Полученные навыки могут быть применены для написания курсовых и
+дипломных работ, а также для ведения технической документации.</p>
+</section>
+<section id="итоговый-слайд" class="slide level1">
+<h1>Итоговый слайд</h1>
+<ul>
+<li>Синтаксис Markdown для научной документации</li>
+<li>Работу с формулами LaTeX внутри Markdown</li>
+<li>Настройку Pandoc и фильтров</li>
+<li>Автоматизацию через Makefile</li>
+<li>Структурирование отчёта по ГОСТ</li>
+</ul>
+</section>
+<section id="вопросы" class="slide level1">
+<h1>Вопросы?</h1>
+<p>Контакты: Email: 1032252590@rudn.ru GitHub: <span class="citation"
+data-cites="Cobalti">@Cobalti</span></p>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
