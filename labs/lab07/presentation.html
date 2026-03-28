@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Галиев Самир Салаватович">
+  <meta name="dcterms.date" content="2026-01-01">
+  <title>Лабораторная работа №7</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^5/dist/theme/black.css" id="theme">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Лабораторная работа №7</h1>
+  <p class="subtitle">Анализ файловой системы Linux. Команды для работы
+с файлами и каталогами</p>
+  <p class="author">Галиев Самир Салаватович</p>
+  <p class="institute">Российский университет дружбы народов им. Патриса
+Лулумбы</p>
+  <p class="date">2026</p>
+</section>
+
+<section id="информация" class="slide level2">
+<h2>Информация</h2>
+<ul>
+<li><strong>Галиев Самир Салаватович</strong></li>
+<li>Студент группы НКАбд-02-25</li>
+<li>ФФМиЕН, Компьютерные и информационные науки</li>
+<li>Email: 1032252590@rudn.ru</li>
+</ul>
+<p><img data-src="image/avatar.jpg" style="width:30.0%" /></p>
+</section>
+<section id="актуальность" class="slide level2">
+<h2>Актуальность</h2>
+<ul>
+<li>Файловая система — основа любой операционной системы</li>
+<li>Умение работать с файлами и каталогами — базовый навык
+администратора и разработчика</li>
+<li>Понимание прав доступа необходимо для обеспечения безопасности
+данных</li>
+<li><strong>Цель:</strong> освоить основные команды для работы с
+файловой системой Linux</li>
+</ul>
+</section>
+<section id="цели-и-задачи" class="slide level2">
+<h2>Цели и задачи</h2>
+<p><strong>Цель:</strong> Ознакомление с файловой системой Linux, её
+структурой и командами для работы с файлами и каталогами.</p>
+<p><strong>Задачи:</strong> - Изучить основные команды для работы с
+файлами - Освоить операции копирования, перемещения и переименования -
+Изучить систему прав доступа - Приобрести навыки анализа файловой
+системы</p>
+</section>
+<section id="структура-файловой-системы-linux" class="slide level2">
+<h2>Структура файловой системы Linux</h2>
+<p>Файловая система Linux имеет иерархическую структуру, начинающуюся с
+корневого каталога <code>/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Каталог</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/</code></td>
+<td>Корневой каталог</td>
+</tr>
+<tr>
+<td><code>/bin</code></td>
+<td>Основные пользовательские команды</td>
+</tr>
+<tr>
+<td><code>/etc</code></td>
+<td>Конфигурационные файлы</td>
+</tr>
+<tr>
+<td><code>/home</code></td>
+<td>Домашние каталоги пользователей</td>
+</tr>
+<tr>
+<td><code>/usr</code></td>
+<td>Пользовательские программы</td>
+</tr>
+<tr>
+<td><code>/var</code></td>
+<td>Переменные данные (логи, кэши)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="команды-для-просмотра-файлов" class="slide level2">
+<h2>Команды для просмотра файлов</h2>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cat</code></td>
+<td>Вывод всего содержимого файла</td>
+</tr>
+<tr>
+<td><code>less</code></td>
+<td>Постраничный просмотр с навигацией</td>
+</tr>
+<tr>
+<td><code>head</code></td>
+<td>Вывод первых строк файла (по умолчанию 10)</td>
+</tr>
+<tr>
+<td><code>tail</code></td>
+<td>Вывод последних строк файла (по умолчанию 10)</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="управление-навигацией-в-less" class="slide level2">
+<h2>Управление навигацией в less</h2>
+<table>
+<thead>
+<tr>
+<th>Клавиша</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Space</code></td>
+<td>Переход к следующей странице</td>
+</tr>
+<tr>
+<td><code>ENTER</code></td>
+<td>Движение вперёд на одну строку</td>
+</tr>
+<tr>
+<td><code>b</code></td>
+<td>Возврат на предыдущую страницу</td>
+</tr>
+<tr>
+<td><code>h</code></td>
+<td>Вызов справки</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Выход из режима просмотра</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="команды-для-управления-файлами" class="slide level2">
+<h2>Команды для управления файлами</h2>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 42%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Назначение</th>
+<th>Опции</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cp</code></td>
+<td>Копирование файлов и каталогов</td>
+<td><code>-r</code> — рекурсивно, <code>-i</code> — запрос
+подтверждения</td>
+</tr>
+<tr>
+<td><code>mv</code></td>
+<td>Перемещение и переименование</td>
+<td><code>-i</code> — запрос подтверждения</td>
+</tr>
+<tr>
+<td><code>mkdir</code></td>
+<td>Создание каталога</td>
+<td><code>-p</code> — создание промежуточных каталогов</td>
+</tr>
+<tr>
+<td><code>rm</code></td>
+<td>Удаление файлов и каталогов</td>
+<td><code>-r</code> — рекурсивно, <code>-f</code> — без
+подтверждения</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="права-доступа" class="slide level2">
+<h2>Права доступа</h2>
+<table>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 28%" />
+<col style="width: 24%" />
+<col style="width: 31%" />
+</colgroup>
+<thead>
+<tr>
+<th>Право</th>
+<th>Обозначение</th>
+<th>Для файла</th>
+<th>Для каталога</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Чтение</td>
+<td><code>r</code></td>
+<td>Просмотр и копирование</td>
+<td>Просмотр списка файлов</td>
+</tr>
+<tr>
+<td>Запись</td>
+<td><code>w</code></td>
+<td>Изменение и переименование</td>
+<td>Создание и удаление файлов</td>
+</tr>
+<tr>
+<td>Выполнение</td>
+<td><code>x</code></td>
+<td>Запуск программы</td>
+<td>Доступ в каталог</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="цифровая-запись-прав-доступа" class="slide level2">
+<h2>Цифровая запись прав доступа</h2>
+<table>
+<thead>
+<tr>
+<th>Двоичная</th>
+<th>Восьмеричная</th>
+<th>Символьная</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>111</td>
+<td>7</td>
+<td>rwx</td>
+</tr>
+<tr>
+<td>110</td>
+<td>6</td>
+<td>rw-</td>
+</tr>
+<tr>
+<td>101</td>
+<td>5</td>
+<td>r-x</td>
+</tr>
+<tr>
+<td>100</td>
+<td>4</td>
+<td>r–</td>
+</tr>
+<tr>
+<td>011</td>
+<td>3</td>
+<td>-wx</td>
+</tr>
+<tr>
+<td>010</td>
+<td>2</td>
+<td>-w-</td>
+</tr>
+<tr>
+<td>001</td>
+<td>1</td>
+<td>–x</td>
+</tr>
+<tr>
+<td>000</td>
+<td>0</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="изменение-прав-доступа" class="slide level2">
+<h2>Изменение прав доступа</h2>
+<p>Команда <code>chmod</code> позволяет изменять права доступа:</p>
+<p><strong>Символьный режим:</strong> - <code>chmod u+x файл</code> —
+добавить выполнение для владельца - <code>chmod g-w файл</code> — убрать
+запись для группы - <code>chmod o=r файл</code> — установить только
+чтение для остальных</p>
+<p><strong>Цифровой режим:</strong> - <code>chmod 755 файл</code> —
+rwxr-xr-x - <code>chmod 644 файл</code> — rw-r–r– -
+<code>chmod 400 файл</code> — rwx——</p>
+</section>
+<section id="шаг-1.-копирование-файла-из-системного-каталога"
+class="slide level2">
+<h2>Шаг 1. Копирование файла из системного каталога</h2>
+<p>Проверка содержимого каталога <code>/usr/include/sys/</code></p>
+<p><img data-src="image/1.png" style="width:40.0%" /></p>
+<p>Файл <code>io.h</code> скопирован в домашний каталог с именем
+<code>equipment</code></p>
+<p><img data-src="image/2.png" style="width:40.0%" /></p>
+</section>
+<section id="шаг-2-4.-создание-каталога-и-перемещение-файлов"
+class="slide level2">
+<h2>Шаг 2-4. Создание каталога и перемещение файлов</h2>
+<ul>
+<li>Создан каталог <code>~/ski.plases</code></li>
+<li>Файл <code>equipment</code> перемещён в него</li>
+<li>Файл переименован в <code>equiplist</code></li>
+</ul>
+<p><img data-src="image/3.png" style="width:40.0%" /></p>
+<p><img data-src="image/4.png" style="width:40.0%" /></p>
+<p><img data-src="image/5.png" style="width:40.0%" /></p>
+</section>
+<section id="шаг-5-8.-создание-структуры-каталогов"
+class="slide level2">
+<h2>Шаг 5-8. Создание структуры каталогов</h2>
+<ul>
+<li>Создан файл <code>abc1</code> и скопирован как
+<code>equiplist2</code></li>
+<li>Создан подкаталог <code>equipment</code></li>
+<li>Файлы перемещены в подкаталог</li>
+<li>Создан и перемещён каталог <code>newdir</code> →
+<code>plans</code></li>
+</ul>
+<p><img data-src="image/6.png" style="width:40.0%" /></p>
+<p><img data-src="image/7.png" style="width:40.0%" /></p>
+<p><img data-src="image/8.png" style="width:40.0%" /></p>
+<p><img data-src="image/9.png" style="width:40.0%" /></p>
+</section>
+<section id="шаг-9.-работа-с-правами-доступа" class="slide level2">
+<h2>Шаг 9. Работа с правами доступа</h2>
+<p>Созданы файлы для отработки прав доступа</p>
+<p><img data-src="image/10.png" style="width:40.0%" /></p>
+<table>
+<thead>
+<tr>
+<th>Файл</th>
+<th>Права</th>
+<th>Восьмеричное значение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>australia</td>
+<td>drwxr–r–</td>
+<td>744</td>
+</tr>
+<tr>
+<td>play</td>
+<td>drwx–x–x</td>
+<td>711</td>
+</tr>
+<tr>
+<td>my_os</td>
+<td>-r-xr–r–</td>
+<td>544</td>
+</tr>
+<tr>
+<td>feathers</td>
+<td>-rw-rw-r–</td>
+<td>664</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="шаг-10.1.-просмотр-содержимого-etcpasswd"
+class="slide level2">
+<h2>Шаг 10.1. Просмотр содержимого <code>/etc/passwd</code></h2>
+<p>Выполнен просмотр содержимого файла <code>/etc/passwd</code></p>
+<p><img data-src="image/15.png" style="width:40.0%" /></p>
+</section>
+<section id="шаг-10.2-10.3.-копирование-и-перемещение-файла"
+class="slide level2">
+<h2>Шаг 10.2-10.3. Копирование и перемещение файла</h2>
+<ul>
+<li>Копирование <code>feathers</code> в <code>file.old</code></li>
+<li>Перемещение <code>file.old</code> в каталог <code>play</code></li>
+</ul>
+<p><img data-src="image/16.png" style="width:40.0%" /></p>
+<p><img data-src="image/17.png" style="width:40.0%" /></p>
+</section>
+<section id="шаг-10.4-10.5.-копирование-и-переименование-каталога"
+class="slide level2">
+<h2>Шаг 10.4-10.5. Копирование и переименование каталога</h2>
+<ul>
+<li>Копирование каталога <code>play</code> в <code>fun</code></li>
+<li>Перемещение <code>fun</code> в <code>play</code> и переименование в
+<code>games</code></li>
+</ul>
+<p><img data-src="image/18.png" style="width:40.0%" /></p>
+<p><img data-src="image/19.png" style="width:40.0%" /></p>
+</section>
+<section id="шаг-10.6-10.8.-снятие-прав-на-чтение" class="slide level2">
+<h2>Шаг 10.6-10.8. Снятие прав на чтение</h2>
+<ul>
+<li>Права на чтение с <code>feathers</code> сняты</li>
+<li>Попытка просмотра: <strong>Permission denied</strong></li>
+<li>Попытка копирования: <strong>Permission denied</strong></li>
+</ul>
+<p><img data-src="image/20.png" style="width:40.0%" /></p>
+<p><img data-src="image/21.png" style="width:40.0%" /></p>
+<p><img data-src="image/22.png" style="width:40.0%" /></p>
+</section>
+<section id="шаг-10.9-10.12.-снятие-прав-на-выполнение"
+class="slide level2">
+<h2>Шаг 10.9-10.12. Снятие прав на выполнение</h2>
+<ul>
+<li>Права на чтение возвращены</li>
+<li>Права на выполнение с <code>play</code> сняты</li>
+<li>Попытка входа в <code>play</code>: <strong>Permission
+denied</strong></li>
+<li>Права возвращены → вход выполнен успешно</li>
+</ul>
+<p><img data-src="image/23.png" style="width:40.0%" /></p>
+<p><img data-src="image/24.png" style="width:40.0%" /></p>
+<p><img data-src="image/25.png" style="width:40.0%" /></p>
+<p><img data-src="image/26.png" style="width:40.0%" /></p>
+</section>
+<section id="шаг-11.-изучение-системных-команд" class="slide level2">
+<h2>Шаг 11. Изучение системных команд</h2>
+<p>Изучены команды для анализа файловой системы:</p>
+<table>
+<thead>
+<tr>
+<th>Команда</th>
+<th>Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mount</code></td>
+<td>Просмотр смонтированных файловых систем</td>
+</tr>
+<tr>
+<td><code>df</code></td>
+<td>Просмотр использования дискового пространства</td>
+</tr>
+<tr>
+<td><code>fsck</code></td>
+<td>Проверка и восстановление файловой системы</td>
+</tr>
+<tr>
+<td><code>mkfs</code></td>
+<td>Создание файловой системы</td>
+</tr>
+<tr>
+<td><code>kill</code></td>
+<td>Управление процессами</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="выводы" class="slide level2">
+<h2>Выводы</h2>
+<p>В ходе выполнения лабораторной работы достигнуты следующие
+результаты:</p>
+<ol type="1">
+<li>Изучена структура файловой системы Linux</li>
+<li>Освоены команды <code>cat</code>, <code>less</code>,
+<code>head</code>, <code>tail</code>, <code>cp</code>, <code>mv</code>,
+<code>mkdir</code></li>
+<li>Изучена система прав доступа и команда <code>chmod</code></li>
+<li>Выполнены практические упражнения по созданию иерархии
+каталогов</li>
+<li>Изучены команды для анализа файловой системы: <code>mount</code>,
+<code>df</code>, <code>fsck</code></li>
+</ol>
+<p><strong>Практическая значимость:</strong> полученные навыки
+необходимы для повседневной работы в операционной системе Linux.</p>
+</section>
+<section id="вопросы" class="slide level2">
+<h2>Вопросы?</h2>
+<p><strong>Контакты:</strong> - Email: 1032252590@rudn.ru - GitHub:
+<span class="citation" data-cites="Cobalti">@Cobalti</span></p>
+</section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^5/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^5/plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^5/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 2000,
+
+        height: 2000,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
